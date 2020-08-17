@@ -1,0 +1,218 @@
+//reset
+body {
+    margin: 0;
+}
+ul {
+    margin: 0;
+    padding:0 ;
+}
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+li {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+}
+
+
+html {
+    font-size: 14px;
+}
+//bg text color
+$color: (
+    'primary': rgb(25, 211, 50),
+    'black': black,
+    'white': white,
+    'gray1': rgb(179, 179, 179),
+    'gray2': rgb(110, 109, 109)
+);
+@each $key, $value in $color {
+    //.text primary
+    .text-#{$key}{
+        color: $value
+    }
+}
+
+// text layout
+@each $var in (left, center, right) {
+    .text-#{$var} {
+        text-align: $var;
+    }
+}
+
+//flex
+.d-flex {
+    display: flex;
+}
+.flex-grow-1 {
+    flex-grow: 1;
+}
+.flex-1 {
+    flex: 1;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+//jc-center
+$flex-jc: (
+    'start': flex-start,
+    'end': flex-end,
+    'center': center,
+    'between': space-between,
+    'around': space-around
+);
+@each $jcKey, $jcVal in $flex-jc {
+    .jc-#{$jcKey} {
+        justify-content: $jcVal;
+    }
+}
+
+//ai-center
+$flex-ai: (
+    start: flex-start,
+    end: flex-end,
+    center: center
+);
+@each $aiKey, $aiVal in $flex-ai {
+    .ai-#{$aiKey} {
+        align-items: $aiVal;
+    }
+}
+
+//text size
+$text-size-base: 1rem;
+$text-size: (
+    xs: 0.8571,
+    sm: 1,
+    md: 1.1429,
+    lg: 1.4286
+);
+@each $key, $val in $text-size {
+    .text-#{$key} {
+        font-size: $val * $text-size-base;
+    }
+}
+
+//margin padding
+$spacing-types: (m: margin, p: padding);
+$spacing-directions: (
+    t: top,
+    r: right,
+    b: bottom,
+    l: left
+);
+$spacing-sizes: (
+    0: 0,
+    1: 0.25,
+    2: 0.5,
+    3: 1,
+    4: 1.5,
+    5: 3
+);
+$spacing-size-base: 1rem;
+
+@each $typeKey, $typeVal in $spacing-types {
+    @each $directionKey, $directionVal in $spacing-directions {
+        @each $sizeKey, $sizeVal in $spacing-sizes {
+            .#{$typeKey}#{$directionKey}-#{$sizeKey} {
+                #{$typeVal}-#{$directionVal}: $sizeVal * $spacing-size-base
+            }
+        }
+    }
+
+    @each $sizeKey, $sizeVal in $spacing-sizes {
+        //mx-* *rem
+        .#{$typeKey}x-#{$sizeKey} {
+            #{$typeVal}-left: $sizeVal * $spacing-size-base;
+            #{$typeVal}-right: $sizeVal * $spacing-size-base;
+        }
+        //my-* *rem
+        .#{$typeKey}y-#{$sizeKey} {
+            #{$typeVal}-top: $sizeVal * $spacing-size-base;
+            #{$typeVal}-bottom: $sizeVal * $spacing-size-base;
+        }
+        //*-* *rem
+        .#{$typeKey}-#{$sizeKey} {
+            #{$typeVal}: $sizeVal * $spacing-size-base;
+        }
+    }
+    
+}
+
+//text weight
+$text-weight: (
+    1: 100,
+    2: 200,
+    3: 300,
+    4: 400,
+    5: 500,
+    6: 600,
+    7: 700,
+    8: 800,
+    9: 900
+);
+@each $key, $val in $text-weight {
+    .text-weight-#{$key} {
+        font-weight: $val;
+    }
+}
+
+//position
+.pos-a {
+    position: absolute;
+}
+.pos-r {
+    position: relative;
+}
+.pos-f {
+    position: fixed;
+}
+$pos-sizes: (
+    0: 0,
+    1: 0.25,
+    2: 0.5,
+    3: 1,
+    4: 1.5,
+    5: 3
+);
+$pos-size-base: 1rem;
+@each $directionVal in (left, top, right, bottom) {
+    @each $sizeKey, $sizeVal in $pos-sizes {
+        .#{$directionVal}-#{$sizeKey} {
+            #{$directionVal}: $sizeVal * $pos-size-base
+        }
+    }
+}
+
+//nav active
+.nav-active {
+    color: rgb(25, 211, 50);
+    font-weight: 700;
+}
+
+//singer active
+.singer-active {
+    color: white;
+    background-color: rgb(25, 211, 50);
+    border-radius: 0.6rem;
+}
+
+//shadow
+.shadow {
+    box-shadow: 1px 1px 10px #ccc;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.h100 {
+    height: 100%;
+}
+.h300 {
+    height: 300px;
+}
